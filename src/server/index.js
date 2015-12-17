@@ -1,18 +1,17 @@
-'use strict';
-import React from 'react';
-import { renderToString } from 'react-dom/server';
-import { RoutingContext, match } from 'react-router';
-import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import serialize from "serialize-javascript";
-import promiseMiddleware from 'universal/lib/promiseMiddleware';
-import routers from 'universal/routers';
-import Reducers from 'universal/reducers';
-import HtmlComponent from 'server/html';
-import { API_URL } from 'config';
+import React from 'react'
+import { renderToString } from 'react-dom/server'
+import { RoutingContext, match } from 'react-router'
+import { createStore, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+import serialize from "serialize-javascript"
+import promiseMiddleware from 'universal/lib/promiseMiddleware'
+import routers from 'universal/routers'
+import Reducers from 'universal/reducers'
+import HtmlComponent from 'server/html'
+import { API_URL } from 'config'
 
 
-module.exports = async function (req, res, next) {
+export default async function (req, res, next) {
   const finalCreateStore = applyMiddleware(promiseMiddleware)(createStore);
   const store = finalCreateStore(Reducers, {});
 

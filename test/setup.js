@@ -1,8 +1,7 @@
-require("babel-core/register");
-require("babel-polyfill");
+require('babel/register')
 
-import chai from 'chai';
-import chaiImmutable from 'chai-immutable';
+import chai from 'chai'
+import chaiImmutable from 'chai-immutable'
 
 
-chai.use(chaiImmutable);
+chai.use(chaiImmutable)
