@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ngthorg/Redux-Universal.git"
+    "url": "https://github.com/techcomio/Redux-Universal.git"
   },
   "license": "BSD",
   "dependencies": {
