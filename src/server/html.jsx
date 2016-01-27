@@ -5,12 +5,12 @@ import DocumentMeta from 'react-document-meta'
 export default class Html extends React.Component {
 
   static propTypes = {
-    state: PropTypes.string.isRequired,
-    markup: PropTypes.string.isRequired
-  }
+    markup: PropTypes.string.isRequired,
+    state: PropTypes.string.isRequired
+  };
 
   render() {
-    const {state, markup} = this.props;
+    const { state, markup } = this.props
     return (
       <html lang="en">
         <head>
@@ -23,13 +23,13 @@ export default class Html extends React.Component {
         </head>
         <body>
 
-          <div id="main" dangerouslySetInnerHTML={{__html: markup}}></div>
+          <div id="main" dangerouslySetInnerHTML={{ __html: markup }} />
 
-          <script dangerouslySetInnerHTML={{__html: `window.__INITIAL_STATE__=${state};`}} />
-          <script src="/js/bundle.js"></script>
+          <script dangerouslySetInnerHTML={{ __html: `window.__INITIAL_STATE__=${state};` }} />
+          <script src="/js/bundle.js" />
         </body>
       </html>
-    );
+    )
   }
 
 }

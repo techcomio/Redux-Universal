@@ -1,5 +1,5 @@
-var path = require('path')
-var webpack = require('webpack')
+const path = require('path')
+const webpack = require('webpack')
 
 
 module.exports = {
@@ -13,8 +13,8 @@ module.exports = {
     publicPath: '/'
   },
   resolve: {
-    extensions: ['', '.js', '.jsx', '.sass', '.scss', '.css'],
-    modulesDirectories: ['src', 'node_modules']
+    extensions: [ '', '.js', '.jsx', '.sass', '.scss', '.css' ],
+    modulesDirectories: [ 'src', 'node_modules' ]
   },
   module: {
     loaders: [
@@ -23,26 +23,25 @@ module.exports = {
         loader: 'babel',
         exclude: /node_modules/,
         query: {
-          optional: [ 'runtime' ],
-          stage: 0,
-          env: {
-            development: {
-              plugins: [
-                'react-transform'
-              ],
-              extra: {
-                'react-transform': {
-                  transforms: [
-                    {
-                      transform:  'react-transform-hmr',
-                      imports: [ 'react' ],
-                      locals:  [ 'module' ]
-                    }
-                  ]
-                }
+          presets: [ 'es2015', 'react', 'stage-0' ],
+          plugins: [
+            [ 'transform-runtime' ],
+            [ 'syntax-async-functions' ],
+            [ 'transform-decorators-legacy' ],
+            [ 'react-transform',
+              { transforms: [
+                  {
+                    transform: 'react-transform-hmr',
+                    imports: [ 'react' ],
+                    locals: [ 'module' ]
+                  }, {
+                    transform: 'react-transform-catch-errors',
+                    imports: [ 'react', 'redbox-react' ]
+                  }
+                ]
               }
-            }
-          }
+            ]
+          ]
         }
       },{
         test: /\.(sass|scss|css)$/,
@@ -54,10 +53,10 @@ module.exports = {
         ]
       },{
 				test: /\.(png|jpg|jpeg|gif)$/,
-				loader: "url-loader?limit=10240"
+				loader: 'url-loader?limit=10240'
 			},{
 				test: /\.(eot|woff2|woff|ttf|svg)$/,
-				loader: "url-loader"
+				loader: 'url-loader'
 			}
     ]
   },
